@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{327D67FA-E35A-4A36-9432-C1AB477A80FC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Klub_aplikacija</RootNamespace>
+    <AssemblyName>Klub_aplikacija</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clanarina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanarina.Designer.cs">
+      <DependentUpon>Clanarina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sportas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sportas.Designer.cs">
+      <DependentUpon>Sportas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Klub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Klub.Designer.cs">
+      <DependentUpon>Klub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Meni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Meni.Designer.cs">
+      <DependentUpon>Meni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrenerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrenerForm.Designer.cs">
+      <DependentUpon>TrenerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trener.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trener.Designer.cs">
+      <DependentUpon>Trener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ClanarinaViewModel.cs" />
+    <Compile Include="ViewModels\KlubViewModel.cs" />
+    <Compile Include="ViewModels\SportasViewModel.cs" />
+    <Compile Include="ViewModels\TrenerViewModel.cs" />
+    <EmbeddedResource Include="Clanarina.resx">
+      <DependentUpon>Clanarina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sportas.resx">
+      <DependentUpon>Sportas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Klub.resx">
+      <DependentUpon>Klub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meni.resx">
+      <DependentUpon>Meni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TrenerForm.resx">
+      <DependentUpon>TrenerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trener.resx">
+      <DependentUpon>Trener.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sportski_klub\SportskiKlubAPI.csproj">
+      <Project>{D95A3EE7-7C02-4C74-B5C9-9E23B183D069}</Project>
+      <Name>SportskiKlubAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

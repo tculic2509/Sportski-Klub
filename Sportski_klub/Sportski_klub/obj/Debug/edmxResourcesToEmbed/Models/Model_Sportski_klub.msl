@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KLUBModelStoreContainer" CdmEntityContainer="KLUB_Entities">
+    <EntitySetMapping Name="Clanarina">
+      <EntityTypeMapping TypeName="KLUBModel.Clanarina">
+        <MappingFragment StoreEntitySet="Clanarina">
+          <ScalarProperty Name="Iznos" ColumnName="Iznos" />
+          <ScalarProperty Name="Mjesec" ColumnName="Mjesec" />
+          <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+          <ScalarProperty Name="SportasID" ColumnName="SportasID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klub">
+      <EntityTypeMapping TypeName="KLUBModel.Klub">
+        <MappingFragment StoreEntitySet="Klub">
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Clanarina" ColumnName="Clanarina" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="DatumOsnivanja" ColumnName="DatumOsnivanja" />
+          <ScalarProperty Name="ImeKluba" ColumnName="ImeKluba" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sportas">
+      <EntityTypeMapping TypeName="KLUBModel.Sportas">
+        <MappingFragment StoreEntitySet="Sportas">
+          <ScalarProperty Name="DatumUpisa" ColumnName="DatumUpisa" />
+          <ScalarProperty Name="LijecnickiPregledVrijediDo" ColumnName="LijecnickiPregledVrijediDo" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="MjestoStanovanja" ColumnName="MjestoStanovanja" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="DatumRodenja" ColumnName="DatumRodenja" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="TrenerID" ColumnName="TrenerID" />
+          <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trener">
+      <EntityTypeMapping TypeName="KLUBModel.Trener">
+        <MappingFragment StoreEntitySet="Trener">
+          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KLUBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clanarina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SportasID" Type="int" Nullable="false" />
+          <Property Name="KlubID" Type="int" Nullable="false" />
+          <Property Name="Mjesec" Type="date" Nullable="false" />
+          <Property Name="Iznos" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImeKluba" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DatumOsnivanja" Type="date" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="Clanarina" Type="float" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sportas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KlubID" Type="int" Nullable="false" />
+          <Property Name="TrenerID" Type="int" />
+          <Property Name="Ime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DatumRodenja" Type="date" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="MjestoStanovanja" Type="varchar" MaxLength="255" />
+          <Property Name="Adresa" Type="varchar" MaxLength="255" />
+          <Property Name="LijecnickiPregledVrijediDo" Type="date" />
+          <Property Name="DatumUpisa" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trener">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KlubID" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OIB" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="255" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Lozinka" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Clanarina__KlubI__49C3F6B7">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Clanarina" Type="Self.Clanarina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clanarina">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clanarina__Sport__4AB81AF0">
+          <End Role="Sportas" Type="Self.Sportas" Multiplicity="1" />
+          <End Role="Clanarina" Type="Self.Clanarina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sportas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clanarina">
+              <PropertyRef Name="SportasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sportas__KlubID__38996AB5">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Sportas" Type="Self.Sportas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sportas">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sportas__TrenerI__398D8EEE">
+          <End Role="Trener" Type="Self.Trener" Multiplicity="0..1" />
+          <End Role="Sportas" Type="Self.Sportas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trener">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sportas">
+              <PropertyRef Name="TrenerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trener__KlubID__48CFD27E">
+          <End Role="Klub" Type="Self.Klub" Multiplicity="1" />
+          <End Role="Trener" Type="Self.Trener" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trener">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KLUBModelStoreContainer">
+          <EntitySet Name="Clanarina" EntityType="Self.Clanarina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klub" EntityType="Self.Klub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sportas" EntityType="Self.Sportas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trener" EntityType="Self.Trener" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clanarina__KlubI__49C3F6B7" Association="Self.FK__Clanarina__KlubI__49C3F6B7">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Clanarina" EntitySet="Clanarina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clanarina__Sport__4AB81AF0" Association="Self.FK__Clanarina__Sport__4AB81AF0">
+            <End Role="Sportas" EntitySet="Sportas" />
+            <End Role="Clanarina" EntitySet="Clanarina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sportas__KlubID__38996AB5" Association="Self.FK__Sportas__KlubID__38996AB5">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Sportas" EntitySet="Sportas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sportas__TrenerI__398D8EEE" Association="Self.FK__Sportas__TrenerI__398D8EEE">
+            <End Role="Trener" EntitySet="Trener" />
+            <End Role="Sportas" EntitySet="Sportas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trener__KlubID__48CFD27E" Association="Self.FK__Trener__KlubID__48CFD27E">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Trener" EntitySet="Trener" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KLUBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KLUB_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clanarina" EntityType="KLUBModel.Clanarina" />
+          <EntitySet Name="Klub" EntityType="KLUBModel.Klub" />
+          <EntitySet Name="Sportas" EntityType="KLUBModel.Sportas" />
+          <EntitySet Name="Trener" EntityType="KLUBModel.Trener" />
+          <AssociationSet Name="FK__Clanarina__KlubI__49C3F6B7" Association="KLUBModel.FK__Clanarina__KlubI__49C3F6B7">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Clanarina" EntitySet="Clanarina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clanarina__Sport__4AB81AF0" Association="KLUBModel.FK__Clanarina__Sport__4AB81AF0">
+            <End Role="Sportas" EntitySet="Sportas" />
+            <End Role="Clanarina" EntitySet="Clanarina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sportas__KlubID__38996AB5" Association="KLUBModel.FK__Sportas__KlubID__38996AB5">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Sportas" EntitySet="Sportas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trener__KlubID__48CFD27E" Association="KLUBModel.FK__Trener__KlubID__48CFD27E">
+            <End Role="Klub" EntitySet="Klub" />
+            <End Role="Trener" EntitySet="Trener" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sportas__TrenerI__398D8EEE" Association="KLUBModel.FK__Sportas__TrenerI__398D8EEE">
+            <End Role="Trener" EntitySet="Trener" />
+            <End Role="Sportas" EntitySet="Sportas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clanarina">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SportasID" Type="Int32" Nullable="false" />
+          <Property Name="KlubID" Type="Int32" Nullable="false" />
+          <Property Name="Mjesec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Iznos" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Klub" Relationship="KLUBModel.FK__Clanarina__KlubI__49C3F6B7" FromRole="Clanarina" ToRole="Klub" />
+          <NavigationProperty Name="Sportas" Relationship="KLUBModel.FK__Clanarina__Sport__4AB81AF0" FromRole="Clanarina" ToRole="Sportas" />
+        </EntityType>
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImeKluba" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DatumOsnivanja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="Clanarina" Type="Double" Nullable="false" />
+          <Property Name="Adresa" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clanarina1" Relationship="KLUBModel.FK__Clanarina__KlubI__49C3F6B7" FromRole="Klub" ToRole="Clanarina" />
+          <NavigationProperty Name="Sportas" Relationship="KLUBModel.FK__Sportas__KlubID__38996AB5" FromRole="Klub" ToRole="Sportas" />
+          <NavigationProperty Name="Trener" Relationship="KLUBModel.FK__Trener__KlubID__48CFD27E" FromRole="Klub" ToRole="Trener" />
+        </EntityType>
+        <EntityType Name="Sportas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KlubID" Type="Int32" Nullable="false" />
+          <Property Name="TrenerID" Type="Int32" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DatumRodenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="MjestoStanovanja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LijecnickiPregledVrijediDo" Type="DateTime" Precision="0" />
+          <Property Name="DatumUpisa" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Clanarina" Relationship="KLUBModel.FK__Clanarina__Sport__4AB81AF0" FromRole="Sportas" ToRole="Clanarina" />
+          <NavigationProperty Name="Klub" Relationship="KLUBModel.FK__Sportas__KlubID__38996AB5" FromRole="Sportas" ToRole="Klub" />
+          <NavigationProperty Name="Trener" Relationship="KLUBModel.FK__Sportas__TrenerI__398D8EEE" FromRole="Sportas" ToRole="Trener" />
+        </EntityType>
+        <EntityType Name="Trener">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KlubID" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OIB" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Klub" Relationship="KLUBModel.FK__Trener__KlubID__48CFD27E" FromRole="Trener" ToRole="Klub" />
+          <NavigationProperty Name="Sportas" Relationship="KLUBModel.FK__Sportas__TrenerI__398D8EEE" FromRole="Trener" ToRole="Sportas" />
+        </EntityType>
+        <Association Name="FK__Clanarina__KlubI__49C3F6B7">
+          <End Type="KLUBModel.Klub" Role="Klub" Multiplicity="1" />
+          <End Type="KLUBModel.Clanarina" Role="Clanarina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clanarina">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clanarina__Sport__4AB81AF0">
+          <End Type="KLUBModel.Sportas" Role="Sportas" Multiplicity="1" />
+          <End Type="KLUBModel.Clanarina" Role="Clanarina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sportas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clanarina">
+              <PropertyRef Name="SportasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sportas__KlubID__38996AB5">
+          <End Type="KLUBModel.Klub" Role="Klub" Multiplicity="1" />
+          <End Type="KLUBModel.Sportas" Role="Sportas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sportas">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trener__KlubID__48CFD27E">
+          <End Type="KLUBModel.Klub" Role="Klub" Multiplicity="1" />
+          <End Type="KLUBModel.Trener" Role="Trener" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klub">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trener">
+              <PropertyRef Name="KlubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sportas__TrenerI__398D8EEE">
+          <End Type="KLUBModel.Trener" Role="Trener" Multiplicity="0..1" />
+          <End Type="KLUBModel.Sportas" Role="Sportas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trener">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sportas">
+              <PropertyRef Name="TrenerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KLUBModelStoreContainer" CdmEntityContainer="KLUB_Entities">
+          <EntitySetMapping Name="Clanarina">
+            <EntityTypeMapping TypeName="KLUBModel.Clanarina">
+              <MappingFragment StoreEntitySet="Clanarina">
+                <ScalarProperty Name="Iznos" ColumnName="Iznos" />
+                <ScalarProperty Name="Mjesec" ColumnName="Mjesec" />
+                <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+                <ScalarProperty Name="SportasID" ColumnName="SportasID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klub">
+            <EntityTypeMapping TypeName="KLUBModel.Klub">
+              <MappingFragment StoreEntitySet="Klub">
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Clanarina" ColumnName="Clanarina" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="DatumOsnivanja" ColumnName="DatumOsnivanja" />
+                <ScalarProperty Name="ImeKluba" ColumnName="ImeKluba" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sportas">
+            <EntityTypeMapping TypeName="KLUBModel.Sportas">
+              <MappingFragment StoreEntitySet="Sportas">
+                <ScalarProperty Name="DatumUpisa" ColumnName="DatumUpisa" />
+                <ScalarProperty Name="LijecnickiPregledVrijediDo" ColumnName="LijecnickiPregledVrijediDo" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="MjestoStanovanja" ColumnName="MjestoStanovanja" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="DatumRodenja" ColumnName="DatumRodenja" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="TrenerID" ColumnName="TrenerID" />
+                <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trener">
+            <EntityTypeMapping TypeName="KLUBModel.Trener">
+              <MappingFragment StoreEntitySet="Trener">
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

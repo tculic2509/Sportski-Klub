@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39b5d1f4f9404b759f33ab9192b73886" Name="Diagram1" ZoomLevel="124">
+        <EntityTypeShape EntityType="KLUBModel.Clanarina" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="KLUBModel.Klub" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="KLUBModel.Sportas" Width="1.5" PointX="5.25" PointY="8.75" />
+        <EntityTypeShape EntityType="KLUBModel.Trener" Width="1.5" PointX="3" PointY="12.75" />
+        <AssociationConnector Association="KLUBModel.FK__Clanarina__KlubI__49C3F6B7" />
+        <AssociationConnector Association="KLUBModel.FK__Clanarina__Sport__4AB81AF0" />
+        <AssociationConnector Association="KLUBModel.FK__Sportas__KlubID__38996AB5" />
+        <AssociationConnector Association="KLUBModel.FK__Trener__KlubID__48CFD27E" />
+        <AssociationConnector Association="KLUBModel.FK__Sportas__TrenerI__398D8EEE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
